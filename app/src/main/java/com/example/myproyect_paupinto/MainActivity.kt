@@ -29,6 +29,8 @@ class MainActivity : ComponentActivity() {
                     NavHost(navController = navController,startDestination = "Portada"){
                         composable("Portada"){Portada(navController)}
                         composable("KickBoxing"){ KickBoxing(navController)}
+                        composable("Boxeo"){ Boxeo(navController)}
+                        composable("MuayThai"){ MuayThai(navController) }
 
                     }
                 }

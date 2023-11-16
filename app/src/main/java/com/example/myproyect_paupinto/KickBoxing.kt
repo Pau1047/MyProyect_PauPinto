@@ -61,7 +61,6 @@ fun KickBoxing(navController: NavHostController){
     }
 }
 
-
 data class InfoKickBoxing(
     val name: String,
     val imagen: Int,
