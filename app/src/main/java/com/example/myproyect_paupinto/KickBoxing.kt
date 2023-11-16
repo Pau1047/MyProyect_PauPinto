@@ -46,12 +46,11 @@ fun KickBoxing(navController: NavHostController){
     var drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
     Scaffold(topBar = { MyTop(drawerState) }) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(top = it.calculateTopPadding())
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = it.calculateBottomPadding()) ){
+            MyModalDrawer(drawerState,scope,navController)
         ) {
-
             LazyColumn {
                 items(getInfoKickBoxing()) { info ->
                     MyCard(infoKickBoxing = info)
@@ -156,4 +155,57 @@ fun RatingBar(
             )
         }
     }
+}
+
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController) {
+
+    ModalNavigationDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            ModalDrawerSheet {
+                Column(modifier = Modifier.padding(8.dp)) {
+                    Image(painter = painterResource(id = R.drawable.sitthichaisitsongpeenong), contentDescription = "", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Crop)
+
+                    NavigationDrawerItem(icon = { Icon(imageVector = Icons.Filled.Favorite, contentDescription = "KickBoxing")},label = {
+                        Text(
+                            text = "KickBoxing", modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        ) }, selected =false , onClick = { scope.launch { drawerState.close() }
+                        navController.navigate("KickBoxing")})
+
+                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.FavoriteBorder, contentDescription = "MuayThai")},label = {   Text(
+                        text = "MuayThai", modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
+                        navController.navigate("MuayThai")})
+
+                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Star, contentDescription = "Boxeo")},label = {   Text(
+                        text = "Boxeo", modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
+                        navController.navigate("Boxeo")})
+
+                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Warning, contentDescription = "MMA")},label = {   Text(
+                        text = "MMA", modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
+                        navController.navigate("MMA")})
+                }
+            }
+        }
+        ,content = {
+            Box(modifier = Modifier
+                .fillMaxSize()) {
+
+            }
+        } )
+
 }
