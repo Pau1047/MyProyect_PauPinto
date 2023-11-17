@@ -129,32 +129,11 @@ fun MyCard(infoMuayThai: InfoMuayThai) {
 
             Divider()
 
-            RatingBarMuay(modifier = Modifier.padding(start = 20.dp),
+            RatingBar2(modifier = Modifier.padding(start = 20.dp),
                 rating = rating,
                 onRatingChanged = { newRating ->
                     rating = newRating
                 })
-        }
-    }
-}
-
-@Composable
-fun RatingBarMuay(
-    modifier: Modifier = Modifier,
-    rating: Int = 0,
-    stars: Int = 5,
-    onRatingChanged: (Int) -> Unit
-) {
-    Row(modifier = modifier) {
-        repeat(stars) { starIndex ->
-            Icon(
-                imageVector = Icons.Outlined.Star,
-                contentDescription = null,
-                tint = if (starIndex < rating) Color.Black else Color.White,
-                modifier = Modifier
-                    .padding(end = 10.dp)
-                    .clickable { onRatingChanged(starIndex + 1) }
-            )
         }
     }
 }

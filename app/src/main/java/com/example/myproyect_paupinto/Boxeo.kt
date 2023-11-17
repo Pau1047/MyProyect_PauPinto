@@ -29,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,6 +46,7 @@ import androidx.navigation.NavHostController
 @Composable
 fun Boxeo(navController: NavHostController){
     var drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val scope = rememberCoroutineScope()
 
     Scaffold(topBar = { MyTop(drawerState) }) {
         Box(
@@ -52,7 +54,7 @@ fun Boxeo(navController: NavHostController){
                 .fillMaxSize()
                 .padding(top = it.calculateTopPadding())
         ) {
-
+            MyModalDrawer(drawerState,scope,navController)
             LazyColumn {
                 items(getInfoBoxeo()) { info ->
                     MyCard(infoBoxeo = info)
