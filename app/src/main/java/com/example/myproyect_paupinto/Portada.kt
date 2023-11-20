@@ -117,7 +117,7 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
         drawerContent = {
             ModalDrawerSheet {
                 Column(modifier = Modifier.padding(8.dp)) {
-                    Image(painter = painterResource(id = R.drawable.sitthichaisitsongpeenong), contentDescription = "", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Crop)
+                    Image(painter = painterResource(id = R.drawable.amcportada), contentDescription = "", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Crop)
 
                     NavigationDrawerItem(icon = { Icon(imageVector = Icons.Filled.Favorite, contentDescription = "KickBoxing")},label = {
                         Text(

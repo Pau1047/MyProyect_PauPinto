@@ -109,7 +109,8 @@ fun MyCard(infoKickBoxing: InfoKickBoxing) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
-        shape = MaterialTheme.shapes.medium
+        shape = MaterialTheme.shapes.medium,
+
 
     ) {
         Column() {
@@ -198,5 +199,4 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
 
             }
         } )
-
 }
