@@ -30,6 +30,7 @@ class MainActivity : ComponentActivity() {
                         composable("KickBoxing"){ KickBoxing(navController)}
                         composable("Boxeo"){ Boxeo(navController)}
                         composable("MuayThai"){ MuayThai(navController) }
+                        composable("MMA"){ MMA(navController) }
 
                     }
                 }
