@@ -1,6 +1,7 @@
 package com.example.myproyect_paupinto
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -35,6 +36,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -57,11 +59,10 @@ fun KickBoxing(navController: NavHostController){
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = it.calculateBottomPadding())
+                .padding(top = it.calculateTopPadding())
         ) {
             MyModalDrawerKick(drawerState, scope, navController)
         }
-
     }
 }
 
@@ -94,7 +95,7 @@ fun getInfoKickBoxing(): List<InfoKickBoxing>{
             "Campeon del mundo en peso wélter"
         ),
         InfoKickBoxing(
-            "Sitthichai Sitsongpeenong",
+            "Sitthichai",
             R.drawable.sitthichaisitsongpeenong,
             "70Kg",
             "Campeon del mundo en peso ligero"
@@ -108,6 +109,7 @@ fun MyCard(infoKickBoxing: InfoKickBoxing) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .background(Color.Blue)
             .padding(16.dp),
         shape = MaterialTheme.shapes.medium,
 
@@ -155,7 +157,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
         drawerContent = {
             ModalDrawerSheet {
                 Column(modifier = Modifier.padding(8.dp)) {
-                    Image(painter = painterResource(id = R.drawable.sitthichaisitsongpeenong), contentDescription = "", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Crop)
+                    Image(painter = painterResource(id = R.drawable.amcportada), contentDescription = "", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Crop)
 
                     NavigationDrawerItem(icon = { Icon(imageVector = Icons.Filled.Favorite, contentDescription = "KickBoxing")},label = {
                         Text(

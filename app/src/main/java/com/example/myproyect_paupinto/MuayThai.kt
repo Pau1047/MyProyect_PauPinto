@@ -62,7 +62,7 @@ fun MuayThai(navController: NavHostController){
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = it.calculateBottomPadding())
+                .padding(top = it.calculateTopPadding())
         ) {
             MyModalDrawerMuay(drawerState, scope, navController)
         }

@@ -59,11 +59,10 @@ fun Portada(navController: NavHostController){
     var drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
-
     Scaffold(topBar = { MyTop(drawerState) }) {
         Box(modifier = Modifier
             .fillMaxSize()
-            .padding(bottom = it.calculateBottomPadding()) ){
+            .padding(top = it.calculateTopPadding()) ){
             MyModalDrawer(drawerState,scope,navController)
         }
     }
