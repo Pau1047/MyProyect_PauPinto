@@ -79,10 +79,10 @@ data class InfoMMA(
 fun getInfoMMA(): List<InfoMMA>{
     return listOf(
         InfoMMA(
-            "Tyson Fury",
+            "Jon Jones",
             R.drawable.tyson,
-            "126Kg",
-            "Campeon del mundo en peso completo"
+            "113g",
+            "Campeon del mundo en semipesado"
         ),
         InfoMMA(
             "Tyson Fury",
@@ -183,6 +183,13 @@ fun MyModalDrawerMMA(drawerState: DrawerState, scope: CoroutineScope, navControl
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
                         navController.navigate("MMA")})
+
+                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Warning, contentDescription = "Inicio")},label = {   Text(
+                        text = "Inicio", modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
+                        navController.navigate("Portada")})
                 }
             }
         }

@@ -206,6 +206,13 @@ fun MyModalDrawerBox(drawerState: DrawerState, scope: CoroutineScope, navControl
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
                         navController.navigate("MMA")})
+
+                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Warning, contentDescription = "Inicio")},label = {   Text(
+                        text = "Inicio", modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
+                        navController.navigate("Portada")})
                 }
             }
         }

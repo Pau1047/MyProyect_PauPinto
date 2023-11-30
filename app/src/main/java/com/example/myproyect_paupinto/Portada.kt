@@ -73,7 +73,7 @@ fun Portada(navController: NavHostController){
 fun MyTop(drawerState: DrawerState){
     var scope = rememberCoroutineScope()
     TopAppBar(
-        colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = Color.Blue),
+        colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = Color.Black),
         navigationIcon = {
             IconButton(onClick ={ scope.launch{
                 if (drawerState.isClosed) {
@@ -146,6 +146,13 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
                         navController.navigate("MMA")})
+
+                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Warning, contentDescription = "Inicio")},label = {   Text(
+                        text = "Inicio", modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
+                        navController.navigate("Portada")})
                 }
             }
         }
