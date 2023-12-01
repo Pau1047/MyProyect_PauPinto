@@ -4,6 +4,7 @@ import android.widget.RatingBar
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -39,6 +40,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -76,7 +78,7 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.Blue)
+            .background(Color.Black)
             .padding(16.dp)
             .clickable {
                 figtherViewModel.setName(infoFigther.name, infoFigther.url)
@@ -86,7 +88,7 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
 
 
         ) {
-        Column() {
+        Column(modifier = Modifier.background(Color.DarkGray)) {
 
             Image(
                 painter = painterResource(id = infoFigther.imagen),
@@ -94,14 +96,16 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
+            Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically ){
+                Text(
+                    text = infoFigther.name,
+                    color  = Color.White,
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 40.sp
+                )
+            }
 
-            Text(
-                text = infoFigther.name,
-                textAlign = TextAlign.Center,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.Bold,
-                fontSize = 40.sp
-            )
             Spacer(modifier = Modifier.height(10.dp))
 
             Text(text = infoFigther.titulos)

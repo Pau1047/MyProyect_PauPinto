@@ -42,7 +42,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "70Kg",
                 "Campeon del mundo en peso ligero",
                 "f",
-                "Kickboxing"
+                "KickBoxing"
             ),
             InfoFigther(
                 "Jon Jones",
