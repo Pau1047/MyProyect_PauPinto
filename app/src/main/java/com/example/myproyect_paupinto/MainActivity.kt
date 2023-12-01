@@ -28,12 +28,9 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val navController = rememberNavController()
                     NavHost(navController = navController,startDestination = "Portada"){
-                        composable("Portada"){Portada(navController)}
-                        composable("KickBoxing"){ KickBoxing(navController, figtherViewModel)}
-                        composable("Boxeo"){ Boxeo(navController)}
-                        composable("MuayThai"){ MuayThai(navController) }
-                        composable("MMA"){ MMA(navController) }
+                        composable("Portada"){Portada(navController,figtherViewModel)}
                         composable("Figther"){ Figther(navController, figtherViewModel) }
+                        composable("Cartas"){ Cartas(navController, figtherViewModel) }
 
 
                     }

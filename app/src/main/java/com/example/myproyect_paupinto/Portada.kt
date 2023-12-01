@@ -56,7 +56,7 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Portada(navController: NavHostController){
+fun Portada(navController: NavHostController, figtherViewModel: FigtherViewModel){
     var drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
@@ -66,7 +66,7 @@ fun Portada(navController: NavHostController){
         Box(modifier = Modifier
             .fillMaxSize()
             .padding(top = it.calculateTopPadding()) ){
-            MyModalDrawer(drawerState,scope,navController)
+            MyModalDrawer(drawerState,scope,navController, figtherViewModel)
 
         }
         Box(modifier = Modifier
@@ -120,7 +120,7 @@ fun MyTop(drawerState: DrawerState){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController) {
+fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController, figtherViewModel: FigtherViewModel) {
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -135,28 +135,37 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                                 .fillMaxWidth()
                                 .padding(8.dp)
                         ) }, selected =false , onClick = { scope.launch { drawerState.close() }
-                        navController.navigate("KickBoxing")})
+                        navController.navigate("Cartas")
+                        figtherViewModel.setGrupo("KickBoxing")
+                        })
 
                     NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.FavoriteBorder, contentDescription = "MuayThai")},label = {   Text(
                         text = "MuayThai", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
-                        navController.navigate("MuayThai")})
+                        navController.navigate("Cartas")
+                        figtherViewModel.setGrupo("MuayThai")
+                    })
 
                     NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Star, contentDescription = "Boxeo")},label = {   Text(
                         text = "Boxeo", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
-                        navController.navigate("Boxeo")})
+                        navController.navigate("Cartas")
+                        figtherViewModel.setGrupo("Boxeo")
+                    })
 
                     NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Warning, contentDescription = "MMA")},label = {   Text(
                         text = "MMA", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
-                        navController.navigate("MMA")})
+                        navController.navigate("Cartas")
+                        figtherViewModel.setGrupo("MMA")
+                    })
+
 
                     NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Warning, contentDescription = "Inicio")},label = {   Text(
                         text = "Inicio", modifier = Modifier
