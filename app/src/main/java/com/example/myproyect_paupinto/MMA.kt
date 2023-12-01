@@ -80,27 +80,27 @@ fun getInfoMMA(): List<InfoMMA>{
     return listOf(
         InfoMMA(
             "Jon Jones",
-            R.drawable.tyson,
+            R.drawable.jonjones,
             "113g",
-            "Campeon del mundo en semipesado"
+            "Campeon del mundo en pesado"
         ),
         InfoMMA(
-            "Tyson Fury",
-            R.drawable.tyson,
-            "126Kg",
-            "Campeon del mundo en peso completo"
+            "Islam Makhachev",
+            R.drawable.islam,
+            "70Kg",
+            "Campeon del mundo en peso ligero"
         ),
         InfoMMA(
-            "Tyson Fury",
-            R.drawable.tyson,
-            "126Kg",
-            "Campeon del mundo en peso completo"
+            "Volkanovski",
+            R.drawable.volkanovski,
+            "69Kg",
+            "Campeon del mundo en peso pluma"
         ),
         InfoMMA(
-            "Tyson Fury",
-            R.drawable.tyson,
-            "126Kg",
-            "Campeon del mundo en peso completo"
+            "Sean O'Malley",
+            R.drawable.sean,
+            "61Kg",
+            "Campeon del mundo en peso gallo"
         )
     )
 }

@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -18,6 +19,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val figtherViewModel: FigtherViewModel = viewModel()
             MyProyect_PauPintoTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -27,10 +29,12 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(navController = navController,startDestination = "Portada"){
                         composable("Portada"){Portada(navController)}
-                        composable("KickBoxing"){ KickBoxing(navController)}
+                        composable("KickBoxing"){ KickBoxing(navController, figtherViewModel)}
                         composable("Boxeo"){ Boxeo(navController)}
                         composable("MuayThai"){ MuayThai(navController) }
                         composable("MMA"){ MMA(navController) }
+                        composable("Figther"){ Figther(navController, figtherViewModel) }
+
 
                     }
                 }

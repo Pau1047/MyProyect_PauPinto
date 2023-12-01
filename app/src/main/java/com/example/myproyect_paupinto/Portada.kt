@@ -46,6 +46,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -59,12 +60,22 @@ fun Portada(navController: NavHostController){
     var drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
+
+
     Scaffold(topBar = { MyTop(drawerState) }) {
         Box(modifier = Modifier
             .fillMaxSize()
             .padding(top = it.calculateTopPadding()) ){
             MyModalDrawer(drawerState,scope,navController)
+
         }
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(top = it.calculateTopPadding()) ){
+
+
+        }
+
     }
 }
 

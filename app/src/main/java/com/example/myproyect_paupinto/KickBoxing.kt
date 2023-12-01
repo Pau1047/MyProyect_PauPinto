@@ -2,6 +2,7 @@ package com.example.myproyect_paupinto
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -51,9 +52,10 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun KickBoxing(navController: NavHostController){
+fun KickBoxing(navController: NavHostController, figtherViewModel: FigtherViewModel){
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+
 
     Scaffold(topBar = { MyTop(drawerState) }) {
         Box(
@@ -61,7 +63,7 @@ fun KickBoxing(navController: NavHostController){
                 .fillMaxSize()
                 .padding(top = it.calculateTopPadding())
         ) {
-            MyModalDrawerKick(drawerState, scope, navController)
+            MyModalDrawerKick(drawerState, scope, navController, figtherViewModel)
         }
     }
 }
@@ -104,13 +106,17 @@ fun getInfoKickBoxing(): List<InfoKickBoxing>{
 }
 
 @Composable
-fun MyCard(infoKickBoxing: InfoKickBoxing) {
+fun MyCard(infoKickBoxing: InfoKickBoxing, figtherViewModel: FigtherViewModel, navController: NavHostController) {
     var rating by remember { mutableStateOf(0) }
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.Blue)
-            .padding(16.dp),
+            .padding(16.dp)
+            .clickable {
+                figtherViewModel.setName(infoKickBoxing.name)
+                navController.navigate("Figther")
+            },
         shape = MaterialTheme.shapes.medium,
 
 
@@ -150,7 +156,7 @@ fun MyCard(infoKickBoxing: InfoKickBoxing) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController) {
+fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController, figtherViewModel: FigtherViewModel) {
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -202,7 +208,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
                 .fillMaxSize()) {
                 LazyColumn {
                     items(getInfoKickBoxing()) { info ->
-                        MyCard(infoKickBoxing = info)
+                        MyCard(infoKickBoxing = info, figtherViewModel, navController)
                     }
                 }
 
