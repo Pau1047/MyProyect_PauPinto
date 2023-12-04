@@ -3,6 +3,9 @@ package com.example.myproyect_paupinto
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -20,32 +23,38 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val figtherViewModel: FigtherViewModel = viewModel()
+
             MyProyect_PauPintoTheme {
-                // A surface container using the 'background' color from the theme
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
+
                     NavHost(navController = navController,startDestination = "Portada"){
+
                         composable("Portada"){Portada(navController,figtherViewModel)}
-                        composable("Figther"){ Figther(navController, figtherViewModel) }
-                        composable("Cartas"){ Cartas(navController, figtherViewModel) }
+                        composable("Figther",
+                            enterTransition = {
+                            slideIntoContainer(
+                                towards = AnimatedContentTransitionScope.SlideDirection.Companion.Down,
+                                animationSpec = tween(800)
+                            )}, exitTransition = { fadeOut(animationSpec = tween(500))})
+                        { Figther(navController, figtherViewModel) }
+
+                        composable("Cartas",
+                            enterTransition = {
+                            slideIntoContainer(
+                                towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
+                                animationSpec = tween(600)
+                            )})
+                        { Cartas(navController, figtherViewModel) }
 
 
                     }
                 }
             }
         }
-    }
-}
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyProyect_PauPintoTheme {
-       // Greeting("Android")
     }
 }

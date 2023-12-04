@@ -81,7 +81,8 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
             .background(Color.Black)
             .padding(16.dp)
             .clickable {
-                figtherViewModel.setName(infoFigther.name, infoFigther.url)
+                figtherViewModel.setName(infoFigther.name)
+                figtherViewModel.setUrl(infoFigther.url)
                 navController.navigate("Figther")
             },
         shape = MaterialTheme.shapes.medium,
@@ -155,7 +156,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
                 Column(modifier = Modifier.padding(8.dp)) {
                     Image(painter = painterResource(id = R.drawable.amcportada), contentDescription = "", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Crop)
 
-                    NavigationDrawerItem(icon = { Icon(imageVector = Icons.Filled.Favorite, contentDescription = "KickBoxing")},label = {
+                    NavigationDrawerItem(icon = { Icon(painterResource(id = R.drawable.kickboxing) , contentDescription = "KickBoxing")},label = {
                         Text(
                             text = "KickBoxing", modifier = Modifier
                                 .fillMaxWidth()
@@ -165,7 +166,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
                         figtherViewModel.setGrupo("KickBoxing")
                     })
 
-                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.FavoriteBorder, contentDescription = "MuayThai")},label = {   Text(
+                    NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.muaythai), contentDescription = "MuayThai")},label = {   Text(
                         text = "MuayThai", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
@@ -174,7 +175,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
                         figtherViewModel.setGrupo("MuayThai")
                     })
 
-                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Star, contentDescription = "Boxeo")},label = {   Text(
+                    NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.boxeo), contentDescription = "Boxeo")},label = {   Text(
                         text = "Boxeo", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
@@ -183,7 +184,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
                         figtherViewModel.setGrupo("Boxeo")
                     })
 
-                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Warning, contentDescription = "MMA")},label = {   Text(
+                    NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.mma), contentDescription = "MMA")},label = {   Text(
                         text = "MMA", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
@@ -193,7 +194,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
                     })
 
 
-                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Warning, contentDescription = "Inicio")},label = {   Text(
+                    NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.trofeo), contentDescription = "Inicio")},label = {   Text(
                         text = "Inicio", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)

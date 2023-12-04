@@ -8,8 +8,11 @@ class FigtherViewModel: ViewModel(){
     var urlFigther = ""
     var grupoFigther = ""
 
-    fun setName(name: String, url: String){
+    fun setName(name: String){
         nameFigther = name
+    }
+
+    fun setUrl(url: String){
         urlFigther = url
     }
 

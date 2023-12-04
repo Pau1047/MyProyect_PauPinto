@@ -129,7 +129,7 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                 Column(modifier = Modifier.padding(8.dp)) {
                     Image(painter = painterResource(id = R.drawable.amcportada), contentDescription = "", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Crop)
 
-                    NavigationDrawerItem(icon = { Icon(imageVector = Icons.Filled.Favorite, contentDescription = "KickBoxing")},label = {
+                    NavigationDrawerItem(icon = { Icon(painterResource(id = R.drawable.kickboxing) , contentDescription = "KickBoxing")},label = {
                         Text(
                             text = "KickBoxing", modifier = Modifier
                                 .fillMaxWidth()
@@ -139,7 +139,7 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                         figtherViewModel.setGrupo("KickBoxing")
                         })
 
-                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.FavoriteBorder, contentDescription = "MuayThai")},label = {   Text(
+                    NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.muaythai), contentDescription = "MuayThai")},label = {   Text(
                         text = "MuayThai", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
@@ -148,7 +148,7 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                         figtherViewModel.setGrupo("MuayThai")
                     })
 
-                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Star, contentDescription = "Boxeo")},label = {   Text(
+                    NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.boxeo), contentDescription = "Boxeo")},label = {   Text(
                         text = "Boxeo", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
@@ -157,7 +157,7 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                         figtherViewModel.setGrupo("Boxeo")
                     })
 
-                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Warning, contentDescription = "MMA")},label = {   Text(
+                    NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.mma), contentDescription = "MMA")},label = {   Text(
                         text = "MMA", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
@@ -167,7 +167,7 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                     })
 
 
-                    NavigationDrawerItem(icon = {Icon(imageVector = Icons.Filled.Warning, contentDescription = "Inicio")},label = {   Text(
+                    NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.trofeo), contentDescription = "Inicio")},label = {   Text(
                         text = "Inicio", modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)

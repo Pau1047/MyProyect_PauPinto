@@ -23,7 +23,7 @@ fun VideoYoutube(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clip(RoundedCornerShape(16.dp)),
+            .clip(RoundedCornerShape(20.dp)),
         factory = { context ->
         YouTubePlayerView(context = context).apply {
             lifecycleOwner.lifecycle.addObserver(this)

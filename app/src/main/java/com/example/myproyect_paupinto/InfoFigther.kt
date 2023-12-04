@@ -17,7 +17,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.artemvakhitov,
                 "95Kg",
                 "Campeon del mundo en peso semipesado",
-                "f",
+                "8fVHDV4ZAIs",
                 "KickBoxing"
             ),
             InfoFigther(
@@ -25,7 +25,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.alexpereira,
                 "85Kg",
                 "Campeon del mundo en peso medio",
-                "ed",
+                "bIyE_uM5EA8",
                 "KickBoxing"
             ),
             InfoFigther(
@@ -33,7 +33,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.harutgrigorian,
                 "77Kg",
                 "Campeon del mundo en peso wélter",
-                "d",
+                "3PmEIXWUlNc",
                 "KickBoxing"
             ),
             InfoFigther(
@@ -41,7 +41,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.sitthichaisitsongpeenong,
                 "70Kg",
                 "Campeon del mundo en peso ligero",
-                "f",
+                "DigtgHtJ6LA",
                 "KickBoxing"
             ),
             InfoFigther(
@@ -49,7 +49,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.jonjones,
                 "113g",
                 "Campeon del mundo en pesado",
-                "d",
+                "8lKirrARb0w",
                 "MMA"
             ),
             InfoFigther(
@@ -57,7 +57,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.islam,
                 "70Kg",
                 "Campeon del mundo en peso ligero",
-                "I",
+                "ypoI1m-M-0M",
                 "MMA"
             ),
             InfoFigther(
@@ -65,7 +65,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.volkanovski,
                 "69Kg",
                 "Campeon del mundo en peso pluma",
-                "d",
+                "cWq0JMxbPko",
                 "MMA"
             ),
             InfoFigther(
@@ -73,7 +73,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.sean,
                 "61Kg",
                 "Campeon del mundo en peso gallo",
-                "d",
+                "SQFv5lfJl8E",
                 "MMA"
             ),
             InfoFigther(
@@ -81,7 +81,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.tawanchai,
                 "126Kg",
                 "Campeon del mundo en peso pluma",
-                "d",
+                "Uzyi3qd_C3I",
                 "MuayThai"
             ),
             InfoFigther(
@@ -89,7 +89,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.jonathan,
                 "85Kg",
                 "Campeon del mundo en peso gallo",
-                "d",
+                "v_kKa3Rw51Q",
                 "MuayThai"
             ),
             InfoFigther(
@@ -97,7 +97,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.rodtang,
                 "66,5Kg",
                 "Campeon del mundo en peso mosca",
-                "d",
+                "FxCqa3nb6XM",
                 "MuayThai"
             ),
             InfoFigther(
@@ -105,7 +105,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.joseph,
                 "61,2Kg",
                 "Campeon del mundo en peso paja",
-                "d",
+                "3NRMdTWiraI",
                 "MuayThai"
             ),
             InfoFigther(
@@ -113,7 +113,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.tyson,
                 "126Kg",
                 "Campeon del mundo en peso completo",
-                "d",
+                "3trHENldelY",
                 "Boxeo"
             ),
             InfoFigther(
@@ -121,7 +121,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.caneloalvarez,
                 "85Kg",
                 "Campeon del mundo en peso medio",
-                "d",
+                "TrE91xJFAPM",
                 "Boxeo"
             ),
             InfoFigther(
@@ -129,7 +129,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.terence,
                 "66,5Kg",
                 "Campeon del mundo en peso wélter",
-                "s",
+                "8cCw_xPuYow",
                 "Boxeo"
             ),
             InfoFigther(
@@ -137,7 +137,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 R.drawable.devin,
                 "61,2Kg",
                 "Campeon del mundo en peso ligero",
-                "d",
+                "S_HsSeRYspc",
                 "Boxeo"
             )
         )
