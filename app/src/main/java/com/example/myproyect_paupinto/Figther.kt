@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -39,7 +38,7 @@ import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.myproyect_paupinto.ui.theme.Purple40
+import com.example.myproyect_paupinto.ui.theme.fontcanter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,17 +54,17 @@ fun Figther(navController: NavHostController, figtherViewModel: FigtherViewModel
             Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center){
                 Row{
                     Text(text = figtherViewModel.nameFigther,
+                        fontFamily = fontcanter ,
                         modifier = Modifier
                             .size(35.dp),
+                        color = Color.White
                     )
                 }
-
-                Divider()
-
-                Row{
-                      VideoYoutube(youtubeVideoId = figtherViewModel.urlFigther, lifecycleOwner = LocalLifecycleOwner.current)
+                Box() {
+                    Divider()
+                    VideoYoutube(youtubeVideoId = figtherViewModel.urlFigther, lifecycleOwner = LocalLifecycleOwner.current)
+                    Divider()
                 }
-
 
             }
         }
@@ -87,10 +86,10 @@ fun MyFAB(navController: NavHostController){
     )
 
     val colors = listOf(
-        Color(0xFF405DE6),
-        Color(0xFFC13584),
-        Color(0xFFFD1D1D),
-        Color(0xFFFFDC80)
+        Color(0xFF002DFF),
+        Color(0xFF7ED6FF),
+        Color(0xFFFFFFFF),
+        Color(0xFF001170)
     )
     var gradientBrush by remember {
         mutableStateOf(
@@ -112,8 +111,8 @@ fun MyFAB(navController: NavHostController){
         }
         .size(57.dp)
     ){
-        FloatingActionButton(onClick = {navController.popBackStack()}, containerColor = Purple40, shape = CircleShape) {
-            Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = " ", tint = Color.White )
+        FloatingActionButton(onClick = {navController.popBackStack()}, containerColor = Color.LightGray, shape = CircleShape) {
+            Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = " " )
         }
     }
 }

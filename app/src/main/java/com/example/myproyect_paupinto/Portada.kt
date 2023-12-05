@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -71,11 +72,14 @@ fun Portada(navController: NavHostController, figtherViewModel: FigtherViewModel
         }
         Box(modifier = Modifier
             .fillMaxSize()
-            .padding(top = it.calculateTopPadding()) ){
-
-
+            .padding(top = it.calculateTopPadding()) ) {
+            Row {
+                Text(text = "Deportes de contacto")
+            }
+            Row {
+                Text(text = "En esta aplicación podeis estar actualizados sobre los diferentes campeones de cada peso de vuestro deporte favorito.")
+            }
         }
-
     }
 }
 
