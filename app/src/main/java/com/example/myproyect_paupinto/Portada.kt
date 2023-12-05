@@ -1,13 +1,16 @@
 package com.example.myproyect_paupinto
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -45,12 +48,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.myproyect_paupinto.ui.theme.Claro
+import com.example.myproyect_paupinto.ui.theme.Claro2
+import com.example.myproyect_paupinto.ui.theme.Medio
+import com.example.myproyect_paupinto.ui.theme.Medio2
+import com.example.myproyect_paupinto.ui.theme.Oscuro
+import com.example.myproyect_paupinto.ui.theme.Oscuro2
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -60,6 +70,7 @@ import kotlinx.coroutines.launch
 fun Portada(navController: NavHostController, figtherViewModel: FigtherViewModel){
     var drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+
 
 
 
@@ -73,12 +84,7 @@ fun Portada(navController: NavHostController, figtherViewModel: FigtherViewModel
         Box(modifier = Modifier
             .fillMaxSize()
             .padding(top = it.calculateTopPadding()) ) {
-            Row {
-                Text(text = "Deportes de contacto")
-            }
-            Row {
-                Text(text = "En esta aplicación podeis estar actualizados sobre los diferentes campeones de cada peso de vuestro deporte favorito.")
-            }
+
         }
     }
 }
@@ -125,6 +131,7 @@ fun MyTop(drawerState: DrawerState){
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController, figtherViewModel: FigtherViewModel) {
+    val brush = Brush.linearGradient(listOf(Claro, Claro2, Medio, Medio2, Oscuro, Oscuro2))
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -182,9 +189,18 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
         }
         ,content = {
             Box(modifier = Modifier
-            .fillMaxSize()) {
-
+            .fillMaxSize()
+            .background(brush)) {
+                Column {
+                    Row {
+                        Text(text = "Que son los deportes de contacto?")
+                        Text(text = "Que son los deportes de contacto?")
+                    }
+                    Row {
+                        Text(text = "En esta aplicación podeis estar actualizados sobre los diferentes campeones de cada peso de vuestro deporte favorito.")
+                    }
+                }
+            }
         }
-        } )
-
+    )
 }

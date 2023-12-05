@@ -106,12 +106,14 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
             Text(text = infoFigther.peso)
             Spacer(modifier = Modifier.height(5.dp))
 
-            RatingBar(modifier = Modifier.padding(start = 20.dp),
-                rating = rating,
-                onRatingChanged = { newRating ->
-                    rating = newRating
-                }
-            )
+            Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically ){
+                RatingBar(modifier = Modifier.padding(start = 20.dp),
+                    rating = rating,
+                    onRatingChanged = { newRating ->
+                        rating = newRating
+                    }
+                )
+            }
         }
     }
 }

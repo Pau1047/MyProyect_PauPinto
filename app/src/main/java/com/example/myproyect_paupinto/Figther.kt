@@ -55,16 +55,15 @@ fun Figther(navController: NavHostController, figtherViewModel: FigtherViewModel
                 Row{
                     Text(text = figtherViewModel.nameFigther,
                         fontFamily = fontcanter ,
-                        modifier = Modifier
-                            .size(35.dp),
+                        modifier = Modifier ,
                         color = Color.White
                     )
                 }
-                Box() {
-                    Divider()
+                Divider()
+                Row {
                     VideoYoutube(youtubeVideoId = figtherViewModel.urlFigther, lifecycleOwner = LocalLifecycleOwner.current)
-                    Divider()
                 }
+                Divider()
 
             }
         }
