@@ -73,7 +73,6 @@ fun Figther(navController: NavHostController, figtherViewModel: FigtherViewModel
     }
 }
 
-
 @Composable
 fun MyFAB(navController: NavHostController){
     val value by rememberInfiniteTransition().animateFloat(
@@ -119,6 +118,3 @@ fun MyFAB(navController: NavHostController){
         }
     }
 }
-
-
-

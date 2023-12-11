@@ -43,7 +43,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.myproyect_paupinto.ui.theme.Medio
+import com.example.myproyect_paupinto.ui.theme.Medio2
 import com.example.myproyect_paupinto.ui.theme.fontcanter
+import com.example.myproyect_paupinto.ui.theme.fontcomic
+import com.example.myproyect_paupinto.ui.theme.fontremo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -80,7 +84,7 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
         shape = MaterialTheme.shapes.medium,
 
         ) {
-        Column(modifier = Modifier.background(Color.LightGray)) {
+        Column(modifier = Modifier.background(Medio)) {
 
             Image(
                 painter = painterResource(id = infoFigther.imagen),
@@ -89,23 +93,23 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
                     .fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
-            Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically ){
+            Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically ){
                 Text(
                     text = infoFigther.name,
-                    fontFamily = fontcanter,
+                    fontFamily = fontcomic,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 40.sp
+                    fontSize = 35.sp
                 )
             }
 
             Spacer(modifier = Modifier.height(10.dp))
-            Text(text = infoFigther.titulos)
+            Text(text = infoFigther.titulos, fontFamily = fontremo , fontSize = 25.sp, color = Color.Black)
             Spacer(modifier = Modifier.height(5.dp))
-            Text(text = infoFigther.peso)
+            Text(text = infoFigther.peso, fontFamily = fontremo, fontSize = 25.sp, color = Color.Black)
             Spacer(modifier = Modifier.height(5.dp))
 
-            Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically ){
+            Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically ){
                 RatingBar(modifier = Modifier.padding(start = 20.dp),
                     rating = rating,
                     onRatingChanged = { newRating ->

@@ -37,3 +37,5 @@ val Typography = Typography(
 )
 
 val fontcanter = FontFamily(Font(R.font.canterbury))
+val fontremo = FontFamily(Font(R.font.remo))
+val fontcomic = FontFamily(Font(R.font.comic))
