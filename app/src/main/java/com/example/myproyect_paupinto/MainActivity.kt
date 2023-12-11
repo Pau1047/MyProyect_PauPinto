@@ -32,8 +32,10 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val navController = rememberNavController()
 
-                    NavHost(navController = navController,startDestination = "Portada"){
-
+                    NavHost(navController = navController,startDestination = DestinationScreen.SplashScreenDest.route){
+                        composable(route = DestinationScreen.SplashScreenDest.route){
+                            SplashScreen(navController = navController)
+                        }
                         composable("Portada"){Portada(navController,figtherViewModel)}
                         composable("Figther",
                             enterTransition = {
@@ -50,8 +52,6 @@ class MainActivity : ComponentActivity() {
                                 animationSpec = tween(600)
                             )})
                         { Cartas(navController, figtherViewModel) }
-
-
                     }
                 }
             }

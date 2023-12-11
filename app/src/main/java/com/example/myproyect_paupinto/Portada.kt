@@ -1,7 +1,6 @@
 package com.example.myproyect_paupinto
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -10,23 +9,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,31 +22,29 @@ import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.rememberDrawerState
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.myproyect_paupinto.ui.theme.Black
 import com.example.myproyect_paupinto.ui.theme.Claro
 import com.example.myproyect_paupinto.ui.theme.Claro2
+import com.example.myproyect_paupinto.ui.theme.Claro3
 import com.example.myproyect_paupinto.ui.theme.Medio
 import com.example.myproyect_paupinto.ui.theme.Medio2
+import com.example.myproyect_paupinto.ui.theme.Medio3
 import com.example.myproyect_paupinto.ui.theme.Oscuro
 import com.example.myproyect_paupinto.ui.theme.Oscuro2
+import com.example.myproyect_paupinto.ui.theme.Oscuro3
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -70,9 +54,6 @@ import kotlinx.coroutines.launch
 fun Portada(navController: NavHostController, figtherViewModel: FigtherViewModel){
     var drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-
-
-
 
     Scaffold(topBar = { MyTop(drawerState) }) {
         Box(modifier = Modifier
@@ -131,7 +112,8 @@ fun MyTop(drawerState: DrawerState){
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController, figtherViewModel: FigtherViewModel) {
-    val brush = Brush.linearGradient(listOf(Claro, Claro2, Medio, Medio2, Oscuro, Oscuro2))
+    val brush = Brush.linearGradient(listOf(Claro, Claro2, Claro3 ,Medio, Medio2,
+        Medio3 ,Oscuro, Oscuro2, Oscuro3, Black))
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -193,11 +175,10 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
             .background(brush)) {
                 Column {
                     Row {
-                        Text(text = "Que son los deportes de contacto?")
-                        Text(text = "Que son los deportes de contacto?")
+                        Text(text = "Que son las artes marciales?")
                     }
                     Row {
-                        Text(text = "En esta aplicación podeis estar actualizados sobre los diferentes campeones de cada peso de vuestro deporte favorito.")
+                        Text(text = "Cuales son los beneficios?")
                     }
                 }
             }

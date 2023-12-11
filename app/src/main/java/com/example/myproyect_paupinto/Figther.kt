@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -37,7 +38,9 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.myproyect_paupinto.ui.theme.Medio2
 import com.example.myproyect_paupinto.ui.theme.fontcanter
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,19 +55,19 @@ fun Figther(navController: NavHostController, figtherViewModel: FigtherViewModel
                 .padding(bottom = it.calculateBottomPadding())
         ){
             Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center){
-                Row{
+                Row(modifier = Modifier.fillMaxWidth().padding(top = 50.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically){
                     Text(text = figtherViewModel.nameFigther,
-                        fontFamily = fontcanter ,
-                        modifier = Modifier ,
+                        fontFamily = fontcanter,
+                        fontSize = 55.sp,
                         color = Color.White
                     )
                 }
-                Divider()
-                Row {
+                Row(modifier = Modifier.fillMaxWidth().padding(top = 10.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+                    Divider()
+                }
+                Row(modifier = Modifier.fillMaxSize().padding(bottom = 300.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
                     VideoYoutube(youtubeVideoId = figtherViewModel.urlFigther, lifecycleOwner = LocalLifecycleOwner.current)
                 }
-                Divider()
-
             }
         }
     }
@@ -85,9 +88,10 @@ fun MyFAB(navController: NavHostController){
     )
 
     val colors = listOf(
+        Color(0xFF2196F3),
         Color(0xFF002DFF),
         Color(0xFF7ED6FF),
-        Color(0xFFFFFFFF),
+        Color(0xFF04E3FF),
         Color(0xFF001170)
     )
     var gradientBrush by remember {
@@ -110,7 +114,7 @@ fun MyFAB(navController: NavHostController){
         }
         .size(57.dp)
     ){
-        FloatingActionButton(onClick = {navController.popBackStack()}, containerColor = Color.LightGray, shape = CircleShape) {
+        FloatingActionButton(onClick = {navController.popBackStack()}, containerColor = Medio2, shape = CircleShape) {
             Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = " " )
         }
     }
