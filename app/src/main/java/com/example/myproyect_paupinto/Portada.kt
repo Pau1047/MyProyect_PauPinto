@@ -1,18 +1,30 @@
 package com.example.myproyect_paupinto
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,13 +39,20 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.myproyect_paupinto.ui.theme.Black
 import com.example.myproyect_paupinto.ui.theme.Claro
@@ -45,6 +64,9 @@ import com.example.myproyect_paupinto.ui.theme.Medio3
 import com.example.myproyect_paupinto.ui.theme.Oscuro
 import com.example.myproyect_paupinto.ui.theme.Oscuro2
 import com.example.myproyect_paupinto.ui.theme.Oscuro3
+import com.example.myproyect_paupinto.ui.theme.fontcomic
+import com.example.myproyect_paupinto.ui.theme.fonthigh
+import com.example.myproyect_paupinto.ui.theme.fontremo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -54,6 +76,8 @@ import kotlinx.coroutines.launch
 fun Portada(navController: NavHostController, figtherViewModel: FigtherViewModel){
     var drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+    val brush = Brush.linearGradient(listOf(Claro2,Claro3 ,Medio, Medio2,
+        Medio3))
 
     Scaffold(topBar = { MyTop(drawerState) }) {
         Box(modifier = Modifier
@@ -62,11 +86,7 @@ fun Portada(navController: NavHostController, figtherViewModel: FigtherViewModel
             MyModalDrawer(drawerState,scope,navController, figtherViewModel)
 
         }
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .padding(top = it.calculateTopPadding()) ) {
 
-        }
     }
 }
 
@@ -109,11 +129,12 @@ fun MyTop(drawerState: DrawerState){
     )
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController, figtherViewModel: FigtherViewModel) {
-    val brush = Brush.linearGradient(listOf(Claro, Claro2, Claro3 ,Medio, Medio2,
-        Medio3 ,Oscuro, Oscuro2, Oscuro3, Black))
+    val brush = Brush.linearGradient(listOf(Claro2,Claro3 ,Medio, Medio2,
+        Medio3))
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -170,18 +191,161 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
             }
         }
         ,content = {
-            Box(modifier = Modifier
-            .fillMaxSize()
-            .background(brush)) {
-                Column {
-                    Row {
-                        Text(text = "Que son las artes marciales?")
-                    }
-                    Row {
-                        Text(text = "Cuales son los beneficios?")
-                    }
+            var selectedImage by remember { mutableStateOf<ImageData?>(null) }
+            val configuration = LocalConfiguration.current
+            when (configuration.orientation) {
+                Configuration.ORIENTATION_LANDSCAPE -> {
+                    Scaffold(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 8.dp),
+                        content = {
+                           Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                               LazyRow(
+                                   modifier = Modifier
+                                       .height(130.dp)
+                                       .fillMaxWidth()
+                               ) {
+                                   items(getAboutData()) { about ->
+                                       ItemAbout(imageData = about) {
+                                           selectedImage = about
+                                       }
+                                   }
+                               }
+                               
+                               Spacer(modifier = Modifier.height(45.dp))
+                               Row {
+                                   selectedImage?.let { imageData ->
+                                       ImageDetail(
+                                           imageData = imageData
+                                       )
+                                   }
+                               }
+                                Column (){
+                                    Text(text = "Que son las Artes Marciales?")
+                                    Text(text = "Que son las Artes Marciales?")
+                                    Text(text = "Beneficios")
+                                    Text(text = "Que son las Artes Marciales?")
+                                    Text(text = "Donde practicarlas?")
+                                    Text(text = "Puedes praticarlo en casa con la ayuda de un saco, pero siempre sera mejor acudir a un gimnasio especializado en ello." +
+                                            "Desde Champion World recomendamos un prestigioso gimnasio de kickboxing en Castellón, llamado AMC Castellón.  ")
+
+                                }
+
+                           }
+                            })
+                }
+                else -> {
+                    Scaffold(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(brush)
+                            .padding(top = 8.dp),
+                        content = {
+                            Column(modifier = Modifier.verticalScroll(rememberScrollState()).background(brush)) {
+
+                                LazyRow(
+                                    modifier = Modifier
+                                        .height(130.dp)
+                                        .background(brush)
+                                        .fillMaxWidth()
+                                ) {
+                                    items(getAboutData()) { about ->
+                                        ItemAbout(imageData = about) {
+                                            selectedImage = about
+                                        }
+                                    }
+
+                                }
+                                Divider()
+                                Spacer(modifier = Modifier.height(25.dp))
+                                Row {
+                                    selectedImage?.let { imageData ->
+                                        ImageDetail(
+                                            imageData = imageData
+                                        )
+                                    }
+                                }
+                                Spacer(modifier = Modifier.height(25.dp))
+
+                                Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+
+                                    Text(text = "Que son las Artes Marciales?", fontSize = 25.sp, fontFamily = fonthigh)
+
+
+                                    Text(text = "Son prácticas y tradiciones cuyo objetivo es someter o defenderse mediante una técnica concreta.", fontSize = 20.sp)
+
+                                    Text(text = "Beneficios", fontSize = 25.sp, fontFamily = fonthigh)
+
+                                    Text(text = "Sin importar cuál se elija, todas tienen en común que con su práctica se puede lograr una reducción de peso, " +
+                                            "tonificación muscular y un aumento en la resistencia cardiovascular. Y como complemento, se logra aumentar los niveles de balance," +
+                                            " coordinación y flexibilidad.", fontSize = 20.sp)
+
+                                    Text(text = "Donde practicarlas?", fontSize = 25.sp,fontFamily = fonthigh)
+
+                                    Text(text = "Prestigioso gimnasio de kickboxing llamado AMC Castellón." ,fontSize = 20.sp)
+
+                                }
+
+
+                            }
+                        })
                 }
             }
         }
     )
+}
+
+@Composable
+fun ImageDetail(imageData: ImageData) {
+    Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        Image(
+            painter = painterResource(id = imageData.photo),
+            contentDescription = "Game Image",
+            modifier = Modifier
+                .fillMaxSize()
+        )
+    }
+}
+
+data class ImageData(
+    var photo: Int
+)
+
+fun getAboutData(): List<ImageData> {
+    return listOf(
+        ImageData(
+            R.drawable.pau1
+        ),
+        ImageData(
+            R.drawable.pau2
+        ),
+        ImageData(
+            R.drawable.pau3
+        ),
+        ImageData(
+            R.drawable.pau4
+        )
+    )
+}
+
+@Composable
+fun ItemAbout(imageData: ImageData, onClick: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxHeight()
+            .width(180.dp)
+            .padding(end = 5.dp)
+            .clickable(onClick = onClick),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(id = imageData.photo),
+            contentDescription = "Game Image",
+            modifier = Modifier
+                .fillMaxSize()
+        )
+
+    }
 }

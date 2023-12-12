@@ -1,5 +1,6 @@
 package com.example.myproyect_paupinto
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -82,7 +84,7 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
                 navController.navigate("Figther")
             },
         shape = MaterialTheme.shapes.medium,
-
+        border = BorderStroke(2.dp, Medio)
         ) {
         Column(modifier = Modifier.background(Medio)) {
 
@@ -104,13 +106,13 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
             }
 
             Spacer(modifier = Modifier.height(10.dp))
-            Text(text = infoFigther.titulos, fontFamily = fontremo , fontSize = 25.sp, color = Color.Black)
+            Text(text = infoFigther.titulos, fontFamily = fontremo , fontSize = 28.sp, color = Color.Black)
             Spacer(modifier = Modifier.height(5.dp))
-            Text(text = infoFigther.peso, fontFamily = fontremo, fontSize = 25.sp, color = Color.Black)
+            Text(text = infoFigther.peso, fontFamily = fontremo, fontSize = 28.sp, color = Color.Black)
             Spacer(modifier = Modifier.height(5.dp))
 
-            Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically ){
-                RatingBar(modifier = Modifier.padding(start = 20.dp),
+            Row(modifier = Modifier.fillMaxWidth().padding(bottom = 7.dp),horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically ){
+                RatingBar(
                     rating = rating,
                     onRatingChanged = { newRating ->
                         rating = newRating
@@ -135,7 +137,7 @@ fun RatingBar(
                 contentDescription = null,
                 tint = if (starIndex < rating) Color.Black else Color.White,
                 modifier = Modifier
-                    .padding(end = 10.dp)
+                    .size(40.dp)
                     .clickable { onRatingChanged(starIndex + 1) }
             )
         }
