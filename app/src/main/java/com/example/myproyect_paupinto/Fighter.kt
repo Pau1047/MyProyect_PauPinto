@@ -45,7 +45,7 @@ import com.example.myproyect_paupinto.ui.theme.fontcanter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Figther(navController: NavHostController, figtherViewModel: FigtherViewModel){
+fun Fighter(navController: NavHostController, fighterViewModel: FighterViewModel){
 
     Scaffold(floatingActionButton = { MyFAB(navController)}) {
         Box(
@@ -56,7 +56,7 @@ fun Figther(navController: NavHostController, figtherViewModel: FigtherViewModel
         ){
             Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center){
                 Row(modifier = Modifier.fillMaxWidth().padding(top = 50.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically){
-                    Text(text = figtherViewModel.nameFigther,
+                    Text(text = fighterViewModel.nameFighter,
                         fontFamily = fontcanter,
                         fontSize = 55.sp,
                         color = Color.White
@@ -66,7 +66,7 @@ fun Figther(navController: NavHostController, figtherViewModel: FigtherViewModel
                     Divider()
                 }
                 Row(modifier = Modifier.fillMaxSize().padding(bottom = 300.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-                    VideoYoutube(youtubeVideoId = figtherViewModel.urlFigther, lifecycleOwner = LocalLifecycleOwner.current)
+                    VideoYoutube(youtubeVideoId = fighterViewModel.urlFighter, lifecycleOwner = LocalLifecycleOwner.current)
                 }
             }
         }

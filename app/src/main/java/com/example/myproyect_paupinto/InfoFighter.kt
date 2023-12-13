@@ -1,6 +1,6 @@
 package com.example.myproyect_paupinto
 
-data class InfoFigther(
+data class InfoFighter(
     val name: String,
     val imagen: Int,
     val peso: String,
@@ -9,10 +9,10 @@ data class InfoFigther(
     val grupo: String
 )
 
-fun getInfoFigther(): List<InfoFigther>{
+fun getInfoFighter(): List<InfoFighter>{
 
         return listOf(
-            InfoFigther(
+            InfoFighter(
                 "Artem Vakhitov",
                 R.drawable.artem,
                 " ‣ 95Kg",
@@ -20,7 +20,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "8fVHDV4ZAIs",
                 "KickBoxing"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Alex Pereira",
                 R.drawable.alexpereira,
                 " ‣ 85Kg",
@@ -28,7 +28,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "bIyE_uM5EA8",
                 "KickBoxing"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Harut Grigorian",
                 R.drawable.harutgrigorian,
                 " ‣ 77Kg",
@@ -36,7 +36,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "3PmEIXWUlNc",
                 "KickBoxing"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Sitthichai",
                 R.drawable.sitthichaisitsongpeenong,
                 " ‣ 70Kg",
@@ -44,7 +44,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "DigtgHtJ6LA",
                 "KickBoxing"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Jon Jones",
                 R.drawable.jonjones,
                 " ‣ 113Kg",
@@ -52,7 +52,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "8lKirrARb0w",
                 "MMA"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Islam",
                 R.drawable.islam,
                 " ‣ 70Kg",
@@ -60,7 +60,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "ypoI1m-M-0M",
                 "MMA"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Volkanovski",
                 R.drawable.volkanovski,
                 " ‣ 69Kg",
@@ -68,7 +68,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "cWq0JMxbPko",
                 "MMA"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Sean O'Malley",
                 R.drawable.sean,
                 " ‣ 61Kg",
@@ -76,7 +76,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "SQFv5lfJl8E",
                 "MMA"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Tawanchai P.K.",
                 R.drawable.tawanchai,
                 " ‣ 70Kg",
@@ -84,7 +84,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "Uzyi3qd_C3I",
                 "MuayThai"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Jonathan",
                 R.drawable.jonathan,
                 " ‣ 85Kg",
@@ -92,7 +92,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "v_kKa3Rw51Q",
                 "MuayThai"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Rodtang",
                 R.drawable.rodtang,
                 " ‣ 66,5Kg",
@@ -100,7 +100,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "FxCqa3nb6XM",
                 "MuayThai"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Joseph Lasiri",
                 R.drawable.joseph,
                 " ‣ 61,2Kg",
@@ -108,7 +108,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "3NRMdTWiraI",
                 "MuayThai"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Tyson Fury",
                 R.drawable.tyson,
                 " ‣ 126Kg",
@@ -116,7 +116,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "3trHENldelY",
                 "Boxeo"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Canelo Álvarez",
                 R.drawable.caneloalvarez,
                 " ‣ 85Kg",
@@ -124,7 +124,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "TrE91xJFAPM",
                 "Boxeo"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Crawford",
                 R.drawable.terence,
                 " ‣ 66,5Kg",
@@ -132,7 +132,7 @@ fun getInfoFigther(): List<InfoFigther>{
                 "8cCw_xPuYow",
                 "Boxeo"
             ),
-            InfoFigther(
+            InfoFighter(
                 "Devin Haney",
                 R.drawable.devin,
                 " ‣ 61,2Kg",

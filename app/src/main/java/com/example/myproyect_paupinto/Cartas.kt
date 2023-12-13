@@ -46,8 +46,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.myproyect_paupinto.ui.theme.Medio
-import com.example.myproyect_paupinto.ui.theme.Medio2
-import com.example.myproyect_paupinto.ui.theme.fontcanter
 import com.example.myproyect_paupinto.ui.theme.fontcomic
 import com.example.myproyect_paupinto.ui.theme.fontremo
 import kotlinx.coroutines.CoroutineScope
@@ -55,7 +53,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Cartas(navController: NavHostController, figtherViewModel: FigtherViewModel){
+fun Cartas(navController: NavHostController, fighterViewModel: FighterViewModel){
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
@@ -65,13 +63,13 @@ fun Cartas(navController: NavHostController, figtherViewModel: FigtherViewModel)
                 .fillMaxSize()
                 .padding(top = it.calculateTopPadding())
         ) {
-            MyModalDrawerKick(drawerState, scope, navController, figtherViewModel)
+            MyModalDrawerKick(drawerState, scope, navController, fighterViewModel)
         }
     }
 }
 
 @Composable
-fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navController: NavHostController) {
+fun MyCard(infoFighter: InfoFighter, fighterViewModel: FighterViewModel, navController: NavHostController) {
     var rating by remember { mutableStateOf(0) }
     Card(
         modifier = Modifier
@@ -79,9 +77,9 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
             .background(Color.Black)
             .padding(16.dp)
             .clickable {
-                figtherViewModel.setName(infoFigther.name)
-                figtherViewModel.setUrl(infoFigther.url)
-                navController.navigate("Figther")
+                fighterViewModel.setName(infoFighter.name)
+                fighterViewModel.setUrl(infoFighter.url)
+                navController.navigate("Fighter")
             },
         shape = MaterialTheme.shapes.medium,
         border = BorderStroke(2.dp, Medio)
@@ -89,7 +87,7 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
         Column(modifier = Modifier.background(Medio)) {
 
             Image(
-                painter = painterResource(id = infoFigther.imagen),
+                painter = painterResource(id = infoFighter.imagen),
                 contentDescription = "Imatge",
                 modifier = Modifier
                     .fillMaxSize(),
@@ -97,7 +95,7 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
             )
             Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically ){
                 Text(
-                    text = infoFigther.name,
+                    text = infoFighter.name,
                     fontFamily = fontcomic,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
@@ -106,9 +104,9 @@ fun MyCard(infoFigther: InfoFigther, figtherViewModel: FigtherViewModel, navCont
             }
 
             Spacer(modifier = Modifier.height(10.dp))
-            Text(text = infoFigther.titulos, fontFamily = fontremo , fontSize = 28.sp, color = Color.Black)
+            Text(text = infoFighter.titulos, fontFamily = fontremo , fontSize = 28.sp, color = Color.Black)
             Spacer(modifier = Modifier.height(5.dp))
-            Text(text = infoFigther.peso, fontFamily = fontremo, fontSize = 28.sp, color = Color.Black)
+            Text(text = infoFighter.peso, fontFamily = fontremo, fontSize = 28.sp, color = Color.Black)
             Spacer(modifier = Modifier.height(5.dp))
 
             Row(modifier = Modifier.fillMaxWidth().padding(bottom = 7.dp),horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically ){
@@ -145,7 +143,7 @@ fun RatingBar(
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController, figtherViewModel: FigtherViewModel) {
+fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController, fighterViewModel: FighterViewModel) {
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -161,7 +159,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
                                 .padding(8.dp)
                         ) }, selected =false , onClick = { scope.launch { drawerState.close() }
                         navController.navigate("Cartas")
-                        figtherViewModel.setGrupo("KickBoxing")
+                        fighterViewModel.setGrupo("KickBoxing")
                     })
 
                     NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.muaythai), contentDescription = "MuayThai")},label = {   Text(
@@ -170,7 +168,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
                         navController.navigate("Cartas")
-                        figtherViewModel.setGrupo("MuayThai")
+                        fighterViewModel.setGrupo("MuayThai")
                     })
 
                     NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.boxeo), contentDescription = "Boxeo")},label = {   Text(
@@ -179,7 +177,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
                         navController.navigate("Cartas")
-                        figtherViewModel.setGrupo("Boxeo")
+                        fighterViewModel.setGrupo("Boxeo")
                     })
 
                     NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.mma), contentDescription = "MMA")},label = {   Text(
@@ -188,7 +186,7 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
                         navController.navigate("Cartas")
-                        figtherViewModel.setGrupo("MMA")
+                        fighterViewModel.setGrupo("MMA")
                     })
 
 
@@ -205,12 +203,12 @@ fun MyModalDrawerKick(drawerState: DrawerState, scope: CoroutineScope, navContro
             Box(modifier = Modifier
                 .fillMaxSize()) {
                 LazyColumn {
-                    items(getInfoFigther()) { info ->
-                        when(figtherViewModel.grupoFigther) {
-                            "MuayThai" -> {if (info.grupo == "MuayThai")MyCard(info, figtherViewModel, navController) }
-                            "MMA"-> {if (info.grupo == "MMA")MyCard(info, figtherViewModel, navController) }
-                            "KickBoxing" -> {if (info.grupo == "KickBoxing")MyCard(info, figtherViewModel, navController) }
-                            "Boxeo" -> {if (info.grupo == "Boxeo")MyCard(info, figtherViewModel, navController) }
+                    items(getInfoFighter()) { info ->
+                        when(fighterViewModel.grupoFighter) {
+                            "MuayThai" -> {if (info.grupo == "MuayThai")MyCard(info, fighterViewModel, navController) }
+                            "MMA"-> {if (info.grupo == "MMA")MyCard(info, fighterViewModel, navController) }
+                            "KickBoxing" -> {if (info.grupo == "KickBoxing")MyCard(info, fighterViewModel, navController) }
+                            "Boxeo" -> {if (info.grupo == "Boxeo")MyCard(info, fighterViewModel, navController) }
                         }
                     }
                 }

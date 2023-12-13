@@ -2,22 +2,22 @@ package com.example.myproyect_paupinto
 
 import androidx.lifecycle.ViewModel
 
-class FigtherViewModel: ViewModel(){
+class FighterViewModel: ViewModel(){
 
-    var nameFigther = ""
-    var urlFigther = ""
-    var grupoFigther = ""
+    var nameFighter = ""
+    var urlFighter = ""
+    var grupoFighter = ""
 
     fun setName(name: String){
-        nameFigther = name
+        nameFighter = name
     }
 
     fun setUrl(url: String){
-        urlFigther = url
+        urlFighter = url
     }
 
     fun setGrupo(grupo: String) {
-        grupoFigther = grupo
+        grupoFighter = grupo
     }
 }
 

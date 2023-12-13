@@ -54,26 +54,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.myproyect_paupinto.ui.theme.Black
-import com.example.myproyect_paupinto.ui.theme.Claro
 import com.example.myproyect_paupinto.ui.theme.Claro2
 import com.example.myproyect_paupinto.ui.theme.Claro3
 import com.example.myproyect_paupinto.ui.theme.Medio
 import com.example.myproyect_paupinto.ui.theme.Medio2
 import com.example.myproyect_paupinto.ui.theme.Medio3
-import com.example.myproyect_paupinto.ui.theme.Oscuro
-import com.example.myproyect_paupinto.ui.theme.Oscuro2
-import com.example.myproyect_paupinto.ui.theme.Oscuro3
-import com.example.myproyect_paupinto.ui.theme.fontcomic
 import com.example.myproyect_paupinto.ui.theme.fonthigh
-import com.example.myproyect_paupinto.ui.theme.fontremo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Portada(navController: NavHostController, figtherViewModel: FigtherViewModel){
+fun Portada(navController: NavHostController, fighterViewModel: FighterViewModel){
     var drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val brush = Brush.linearGradient(listOf(Claro2,Claro3 ,Medio, Medio2,
@@ -83,7 +76,7 @@ fun Portada(navController: NavHostController, figtherViewModel: FigtherViewModel
         Box(modifier = Modifier
             .fillMaxSize()
             .padding(top = it.calculateTopPadding()) ){
-            MyModalDrawer(drawerState,scope,navController, figtherViewModel)
+            MyModalDrawer(drawerState,scope,navController, fighterViewModel)
 
         }
 
@@ -132,9 +125,7 @@ fun MyTop(drawerState: DrawerState){
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController, figtherViewModel: FigtherViewModel) {
-    val brush = Brush.linearGradient(listOf(Claro2,Claro3 ,Medio, Medio2,
-        Medio3))
+fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController: NavHostController, fighterViewModel: FighterViewModel) {
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -150,7 +141,7 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                                 .padding(8.dp)
                         ) }, selected =false , onClick = { scope.launch { drawerState.close() }
                         navController.navigate("Cartas")
-                        figtherViewModel.setGrupo("KickBoxing")
+                        fighterViewModel.setGrupo("KickBoxing")
                         })
 
                     NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.muaythai), contentDescription = "MuayThai")},label = {   Text(
@@ -159,7 +150,7 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
                         navController.navigate("Cartas")
-                        figtherViewModel.setGrupo("MuayThai")
+                        fighterViewModel.setGrupo("MuayThai")
                     })
 
                     NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.boxeo), contentDescription = "Boxeo")},label = {   Text(
@@ -168,7 +159,7 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
                         navController.navigate("Cartas")
-                        figtherViewModel.setGrupo("Boxeo")
+                        fighterViewModel.setGrupo("Boxeo")
                     })
 
                     NavigationDrawerItem(icon = {Icon(painterResource(id = R.drawable.mma), contentDescription = "MMA")},label = {   Text(
@@ -177,7 +168,7 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                             .padding(8.dp)
                     ) }, selected =false , onClick = {  scope.launch { drawerState.close() }
                         navController.navigate("Cartas")
-                        figtherViewModel.setGrupo("MMA")
+                        fighterViewModel.setGrupo("MMA")
                     })
 
 
@@ -200,54 +191,11 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                             .fillMaxSize()
                             .padding(top = 8.dp),
                         content = {
-                           Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                               LazyRow(
-                                   modifier = Modifier
-                                       .height(130.dp)
-                                       .fillMaxWidth()
-                               ) {
-                                   items(getAboutData()) { about ->
-                                       ItemAbout(imageData = about) {
-                                           selectedImage = about
-                                       }
-                                   }
-                               }
-                               
-                               Spacer(modifier = Modifier.height(45.dp))
-                               Row {
-                                   selectedImage?.let { imageData ->
-                                       ImageDetail(
-                                           imageData = imageData
-                                       )
-                                   }
-                               }
-                                Column (){
-                                    Text(text = "Que son las Artes Marciales?")
-                                    Text(text = "Que son las Artes Marciales?")
-                                    Text(text = "Beneficios")
-                                    Text(text = "Que son las Artes Marciales?")
-                                    Text(text = "Donde practicarlas?")
-                                    Text(text = "Puedes praticarlo en casa con la ayuda de un saco, pero siempre sera mejor acudir a un gimnasio especializado en ello." +
-                                            "Desde Champion World recomendamos un prestigioso gimnasio de kickboxing en Castellón, llamado AMC Castellón.  ")
-
-                                }
-
-                           }
-                            })
-                }
-                else -> {
-                    Scaffold(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(brush)
-                            .padding(top = 8.dp),
-                        content = {
-                            Column(modifier = Modifier.verticalScroll(rememberScrollState()).background(brush)) {
+                            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
 
                                 LazyRow(
                                     modifier = Modifier
                                         .height(130.dp)
-                                        .background(brush)
                                         .fillMaxWidth()
                                 ) {
                                     items(getAboutData()) { about ->
@@ -273,23 +221,75 @@ fun MyModalDrawer(drawerState: DrawerState, scope: CoroutineScope, navController
                                     Text(text = "Que son las Artes Marciales?", fontSize = 25.sp, fontFamily = fonthigh)
 
 
-                                    Text(text = "Son prácticas y tradiciones cuyo objetivo es someter o defenderse mediante una técnica concreta.", fontSize = 20.sp)
+                                    Text(text = " Son prácticas y tradiciones cuyo objetivo es someter o defenderse mediante una técnica concreta.", fontSize = 20.sp)
 
                                     Text(text = "Beneficios", fontSize = 25.sp, fontFamily = fonthigh)
 
-                                    Text(text = "Sin importar cuál se elija, todas tienen en común que con su práctica se puede lograr una reducción de peso, " +
+                                    Text(text = " Sin importar cuál se elija, todas tienen en común que con su práctica se puede lograr una reducción de peso, " +
                                             "tonificación muscular y un aumento en la resistencia cardiovascular. Y como complemento, se logra aumentar los niveles de balance," +
                                             " coordinación y flexibilidad.", fontSize = 20.sp)
 
                                     Text(text = "Donde practicarlas?", fontSize = 25.sp,fontFamily = fonthigh)
 
-                                    Text(text = "Prestigioso gimnasio de kickboxing llamado AMC Castellón." ,fontSize = 20.sp)
+                                    Text(text = " Prestigioso gimnasio de kickboxing llamado AMC Castellón." ,fontSize = 20.sp)
 
                                 }
-
-
                             }
-                        })
+                            }
+                    )
+                }
+                else -> {
+                    Scaffold(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 8.dp),
+                        content = {
+                            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+
+                                LazyRow(
+                                    modifier = Modifier
+                                        .height(130.dp)
+                                        .fillMaxWidth()
+                                ) {
+                                    items(getAboutData()) { about ->
+                                        ItemAbout(imageData = about) {
+                                            selectedImage = about
+                                        }
+                                    }
+
+                                }
+                                Divider()
+                                Spacer(modifier = Modifier.height(25.dp))
+                                Row {
+                                    selectedImage?.let { imageData ->
+                                        ImageDetail(
+                                            imageData = imageData
+                                        )
+                                    }
+                                }
+                                Spacer(modifier = Modifier.height(25.dp))
+
+                                Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+
+                                    Text(text = "Que son las Artes Marciales?", fontSize = 25.sp, fontFamily = fonthigh)
+
+
+                                    Text(text = " Son prácticas y tradiciones cuyo objetivo es someter o defenderse mediante una técnica concreta.", fontSize = 20.sp)
+
+                                    Text(text = "Beneficios", fontSize = 25.sp, fontFamily = fonthigh)
+
+                                    Text(text = " Sin importar cuál se elija, todas tienen en común que con su práctica se puede lograr una reducción de peso, " +
+                                            "tonificación muscular y un aumento en la resistencia cardiovascular. Y como complemento, se logra aumentar los niveles de balance," +
+                                            " coordinación y flexibilidad.", fontSize = 20.sp)
+
+                                    Text(text = "Donde practicarlas?", fontSize = 25.sp,fontFamily = fonthigh)
+
+                                    Text(text = " Prestigioso gimnasio de kickboxing llamado AMC Castellón." ,fontSize = 20.sp)
+
+                                }
+                            }
+                        }
+                    )
                 }
             }
         }
@@ -301,7 +301,7 @@ fun ImageDetail(imageData: ImageData) {
     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
             painter = painterResource(id = imageData.photo),
-            contentDescription = "Game Image",
+            contentDescription = " Image",
             modifier = Modifier
                 .fillMaxSize()
         )
